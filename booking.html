@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book a Handyman - HandyLocator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">Book a Handyman</header>
+    <main>
+      <form class="booking-form" id="bookingForm">
+        <label for="handyman">Handyman</label>
+        <input type="text" id="handyman" name="handyman" readonly>
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" required>
+        <label for="details">Details</label>
+        <textarea id="details" name="details" rows="3" required></textarea>
+        <button type="submit">Submit Booking</button>
+      </form>
+    </main>
+    <nav class="bottom-nav">
+      <a class="nav-item" href="index.html">🏠<div>HOME</div></a>
+      <a class="nav-item" href="map.html">📍<div>MAP</div></a>
+      <a class="nav-item" href="booking.html">📖<div>BOOKING</div></a>
+      <a class="nav-item" href="profile.html">👤<div>PROFILE</div></a>
+    </nav>
+  </div>
+  <script>
+    // Prefill handyman name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const handyman = urlParams.get('handyman') || '';
+    document.getElementById('handyman').value = handyman;
+    // Simple form handler
+    document.getElementById('bookingForm').onsubmit = function(e) {
+      e.preventDefault();
+      alert('Booking submitted!');
+      this.reset();
+    };
+  </script>
+</body>
+</html> 
